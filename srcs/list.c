@@ -6,13 +6,25 @@
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/29 23:00:06 by kana              #+#    #+#             */
-/*   Updated: 2017/07/29 23:37:38 by kana             ###   ########.fr       */
+/*   Updated: 2017/07/30 00:34:29 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "list.h"
 #include "str.h"
 
+void	my_print_list(t_list *list)
+{
+	int	i;	
+
+	i = 0;
+	while (list)
+	{
+		printf("%p : %s : next=%p\n", list, (char *)list->data, list->next);
+		list = list->next;
+	}
+}
+	
 t_list	*my_create_elem(void *data)
 {
 	t_list	*current;
@@ -63,7 +75,7 @@ int		my_list_size(t_list	*begin_list)
 	return i;
 }
 
-t_list	*my_list_at(t_list *begin_list)
+t_list	*my_list_last(t_list *begin_list)
 {
 	t_list *current;
 
