@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nbr.h                                              :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/29 22:49:16 by kana              #+#    #+#             */
-/*   Updated: 2017/07/30 20:24:37 by kana             ###   ########.fr       */
+/*   Created: 2017/07/30 19:40:06 by kana              #+#    #+#             */
+/*   Updated: 2017/07/30 21:01:49 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef NBR_H
-#define NBR_H
+#include "str.h"
+#include "nbr.h"
 
-#include<stdio.h>
-#include<stdlib.h>
+void	my_putchar(char c);
 
-void	my_putnbr(int nb);
-void	ft_putnbr(int nb);
-int		my_atoi(char *str);
+void	ft_putnbr(int nb)
+{
+	long	n;
 
-#endif
+	n = nb;
+	if (n < 0)
+	{
+		my_putchar('-');
+		n = -n;
+	}
+	if (n > 9)
+	{
+		ft_putnbr(n / 10);
+		ft_putnbr(n % 10);
+	}
+	else
+		my_putchar(n + 48);
+
+}

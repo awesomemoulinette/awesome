@@ -6,7 +6,7 @@
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/29 22:47:56 by kana              #+#    #+#             */
-/*   Updated: 2017/07/29 22:58:47 by kana             ###   ########.fr       */
+/*   Updated: 2017/07/30 20:27:53 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 #include <unistd.h>
 
 void	my_putchar(char c);
-void	my_putstr(cahr *str);
+void	my_putstr(char *str);
 
 #endif

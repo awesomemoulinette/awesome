@@ -1,30 +1,45 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: kana <marvin@42.fr>                        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/07/30 20:33:10 by kana              #+#    #+#              #
+#    Updated: 2017/07/30 21:07:43 by kana             ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 .PHONY: all, clean, fclean, re
 .SUFFIXES:
 
-NAME		=	a.out
+NAME=checker
 
-INC_DIR		=	./includes
+SRCS_DIR=./srcs
+RECS_DIR=./receip
+INC_DIR=includes/
 
-EX_SRC		=	~/checker/day05/ex*/*.c
-MY_SRC		=	./my/*.c
+RAW_RECS=\
+		 ft_putnbr.c
 
-EX_OBJ		=	$(EX_SRC:.c=.o)
-MY_OBJ		=	$(MY_SRC:.c=.o)
+RAW_SRCS=\
+		 str.c\
+		 nbr.c\
+		 main.c
 
-CC			=	gcc
-CFLAGS		=	-Wall -Wextra -Werror
+SRCS=$(addprefix $(SRCS_DIR)/,$(RAW_SRCS))
+RECS=$(addprefix $(RECS_DIR)/,$(RAW_RECS))
+
+CC=gcc
+CFLAGS= -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $(EX_OBJ) $(EX_SRC) -o $(NAME)
-
-$(OBJ):
-	@$(CC) $(CFLAGS) -I $(INC_DIR) -c $(EX_SRC) $(MY_SRC) main.c
+$(NAME):  
+	@$(CC) $(CFLAGS) -I $(INC_DIR) $(SRCS) $(RECS) -o $(NAME) 
 
 clean:
-	@rm -f $(EX_OBJ)
-	@rm -f $(MY_OBJ)
+	@rm -f 
 
 fclean: clean
 	@rm -f $(NAME)
