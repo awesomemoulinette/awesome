@@ -6,7 +6,7 @@
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/29 22:51:44 by kana              #+#    #+#             */
-/*   Updated: 2017/07/30 21:45:30 by kana             ###   ########.fr       */
+/*   Updated: 2017/07/30 23:29:20 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	my_putnbr(int nb)
 
 int		ft_is_digit(char c)
 {
-	return (c > 47 && c < 58);
+	return c > 47 && c < 58;
 }
 
 int		ft_res(char *str, int i)
@@ -53,7 +53,7 @@ int		ft_res(char *str, int i)
 		else
 			break ;
 	}
-	return (res);
+	return res;
 }
 
 int		my_atoi(char *str)
@@ -79,6 +79,45 @@ int		my_atoi(char *str)
 		i++;
 	}
 	res = ft_res(str, i);
-	return (sign * res);
+	return sign * res;
 }
+
+struct s_int_render	*my_int_to_tab(int ac, char **av, int (f*)(int)(int))
+{
+	t_int_render	*exo;
+	int				i;
+	int				j;
+
+	if (!(exo = (t_render *)malloc(sizeof(t_render) * (ac))))
+		return NULL;
+	while (i < ac)
+	{
+		j = 0;
+		while (av[i][j])
+			j++;
+		exo[i].out = av[i];
+		exo[i].srcs = my_atoi(av[i]);
+		exo[i].receip = ft_atoi(av[i]);
+		exo[i].cmp = f(my_atoi(av[i]), ft_atoi(av[i]));
+		i++;
+	}
+	
+	return exo;
+}
+
+void	my_show_tab(struct s_int_render *exo)
+{
+	while (exo)
+	{
+		if (exo.cmp)
+			printf("GRN""%d\n""NC", exo.srcs);
+	}
+}
+
+
+
+
+
+
+
 

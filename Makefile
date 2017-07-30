@@ -6,7 +6,7 @@
 #    By: kana <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/30 20:33:10 by kana              #+#    #+#              #
-#    Updated: 2017/07/30 21:07:43 by kana             ###   ########.fr        #
+#    Updated: 2017/07/30 21:24:51 by kana             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,7 @@ RAW_RECS=\
 		 ft_putnbr.c
 
 RAW_SRCS=\
-		 str.c\
-		 nbr.c\
+		 tools.c\
 		 main.c
 
 SRCS=$(addprefix $(SRCS_DIR)/,$(RAW_SRCS))

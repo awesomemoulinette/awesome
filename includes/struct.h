@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str.h                                              :+:      :+:    :+:   */
+/*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/29 22:47:56 by kana              #+#    #+#             */
-/*   Updated: 2017/07/30 20:27:53 by kana             ###   ########.fr       */
+/*   Created: 2017/07/30 21:48:33 by kana              #+#    #+#             */
+/*   Updated: 2017/07/30 22:26:47 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STR_H
-#define STR_H
+#ifndef STRUCT_H
+#define STRUCT_H
 
-#include <unistd.h>
+typedef struct *s_int_render
+{
+	int		out;
+	int		srcs;
+	int		receip;
+	int			(f*)(int, int)cmp;
+}				*t_int_render;
 
-void	my_putchar(char c);
-void	my_putstr(char *str);
 
-#endif
