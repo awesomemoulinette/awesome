@@ -6,7 +6,7 @@
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/29 22:51:44 by kana              #+#    #+#             */
-/*   Updated: 2017/07/31 10:34:58 by kana             ###   ########.fr       */
+/*   Updated: 2017/07/31 10:53:55 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,10 +117,10 @@ void	my_show_tab(struct s_int_render *exo)
 {
 	while (exo)
 	{
-		if (exo->cmp)
-			printf("\t\t%d\t\t||\t\t"GRN"%d"NC"\t\t||\t\t"NC"%d"GRN"\t\t", out, exo.receip, exo.srcs);
+		if (exo.cmp)
+			printf("\t\t%d\t\t||\t\t"GRN"%d"NC"\t\t||\t\t"NC"%d"GRN"\t\t", exo.out, exo.receip, exo.srcs);
 		else	
-			printf("\t\t%d\t\t||\t\t"GRN"%d"NC"\t\t||\t\t"NC"%d"GRN"\t\t", out, exo.receip, exo.srcs);
+			printf("\t\t%d\t\t||\t\t"GRN"%d"NC"\t\t||\t\t"NC"%d"GRN"\t\t", exo.out, exo.receip, exo.srcs);
 	}
 }
 
