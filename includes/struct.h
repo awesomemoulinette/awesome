@@ -6,7 +6,7 @@
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/30 21:48:33 by kana              #+#    #+#             */
-/*   Updated: 2017/07/30 22:26:47 by kana             ###   ########.fr       */
+/*   Updated: 2017/07/31 10:36:16 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ typedef struct *s_int_render
 	int		out;
 	int		srcs;
 	int		receip;
-	int			(f*)(int, int)cmp;
+	int		(*cmp)(int, int);
 }				*t_int_render;
 
-
+#endif

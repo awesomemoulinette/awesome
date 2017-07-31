@@ -6,11 +6,12 @@
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/29 22:51:44 by kana              #+#    #+#             */
-/*   Updated: 2017/07/30 23:29:20 by kana             ###   ########.fr       */
+/*   Updated: 2017/07/31 10:34:58 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc.h"
+#include "struct.h"
 #include <unistd.h>
 
 void	my_putchar(char c)
@@ -82,13 +83,20 @@ int		my_atoi(char *str)
 	return sign * res;
 }
 
-struct s_int_render	*my_int_to_tab(int ac, char **av, int (f*)(int)(int))
+int		icmp(int n, int nb)
+{
+	if (n = nb)
+		return 1;
+	return 0;
+}
+
+struct s_int_render	*my_int_to_tab(int ac, char **av, int (*icmp)(int, int))
 {
 	t_int_render	*exo;
 	int				i;
 	int				j;
 
-	if (!(exo = (t_render *)malloc(sizeof(t_render) * (ac))))
+	if (!(exo = malloc(sizeof(t_int_render) * (ac))))
 		return NULL;
 	while (i < ac)
 	{
@@ -98,7 +106,7 @@ struct s_int_render	*my_int_to_tab(int ac, char **av, int (f*)(int)(int))
 		exo[i].out = av[i];
 		exo[i].srcs = my_atoi(av[i]);
 		exo[i].receip = ft_atoi(av[i]);
-		exo[i].cmp = f(my_atoi(av[i]), ft_atoi(av[i]));
+		exo[i].cmp = icmp(my_atoi(av[i]), ft_atoi(av[i]));
 		i++;
 	}
 	
@@ -109,8 +117,10 @@ void	my_show_tab(struct s_int_render *exo)
 {
 	while (exo)
 	{
-		if (exo.cmp)
-			printf("GRN""%d\n""NC", exo.srcs);
+		if (exo->cmp)
+			printf("\t\t%d\t\t||\t\t"GRN"%d"NC"\t\t||\t\t"NC"%d"GRN"\t\t", out, exo.receip, exo.srcs);
+		else	
+			printf("\t\t%d\t\t||\t\t"GRN"%d"NC"\t\t||\t\t"NC"%d"GRN"\t\t", out, exo.receip, exo.srcs);
 	}
 }
 
