@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/30 19:40:06 by kana              #+#    #+#             */
-/*   Updated: 2017/07/31 11:14:42 by kana             ###   ########.fr       */
+/*   Created: 2017/07/31 11:41:25 by kana              #+#    #+#             */
+/*   Updated: 2017/07/31 11:49:25 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	my_putchar(char c);
+void	ft_putchar(char c);
 
-void	ft_putnbr(int nb)
+void	ft_putstr(char *str)
 {
-	long	n;
+	int		i;
 
-	n = nb;
-	if (n < 0)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		my_putchar('-');
-		n = -n;
+		ft_putchar(str[i]);
+		i++;
 	}
-	if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
-	}
-	else
-		my_putchar(n + 48);
-
 }

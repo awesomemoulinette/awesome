@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/30 19:40:06 by kana              #+#    #+#             */
-/*   Updated: 2017/07/31 11:14:42 by kana             ###   ########.fr       */
+/*   Created: 2017/07/31 14:25:09 by kana              #+#    #+#             */
+/*   Updated: 2017/07/31 14:29:38 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	my_putchar(char c);
+#include <stdlib.h>
 
-void	ft_putnbr(int nb)
+int	ft_strlen(char *str)
 {
-	long	n;
+	int i;
 
-	n = nb;
-	if (n < 0)
-	{
-		my_putchar('-');
-		n = -n;
-	}
-	if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
-	}
-	else
-		my_putchar(n + 48);
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
 
+char	*ft_strdup(char *src)
+{
+	int		i;
+	int		length;
+	char	*dest;
+
+	length = ft_strlen(src);
+	dest = malloc(sizeof(char) * (length + 1));
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

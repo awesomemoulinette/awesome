@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   struc.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/30 19:40:06 by kana              #+#    #+#             */
-/*   Updated: 2017/07/31 11:14:42 by kana             ###   ########.fr       */
+/*   Created: 2017/07/31 11:50:00 by kana              #+#    #+#             */
+/*   Updated: 2017/07/31 14:21:17 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	my_putchar(char c);
+#ifndef STRUC_H
+#define STRUC_H
 
-void	ft_putnbr(int nb)
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+void	ft_putchar(char c);
+void	ft_putstr(char *str);
+void	my_putstr(char *str);
+int		scmp(char *s1, char *s2)
+int		check_for_print(void *data);
+
+typedef struct	p_to_tab(void *data)
 {
-	long	n;
+	char	*out;
+	char	*src;
+	char	*dst;
+	int		scmp;
+}				t_to_tab;
 
-	n = nb;
-	if (n < 0)
-	{
-		my_putchar('-');
-		n = -n;
-	}
-	if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
-	}
-	else
-		my_putchar(n + 48);
 
-}
+#endif

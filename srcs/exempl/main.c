@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/30 19:40:06 by kana              #+#    #+#             */
-/*   Updated: 2017/07/31 11:14:42 by kana             ###   ########.fr       */
+/*   Created: 2017/07/31 14:23:43 by kana              #+#    #+#             */
+/*   Updated: 2017/07/31 14:33:43 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	my_putchar(char c);
+#include "struc.h"
 
-void	ft_putnbr(int nb)
+int main(int ac, char **av)
 {
-	long	n;
-
-	n = nb;
-	if (n < 0)
-	{
-		my_putchar('-');
-		n = -n;
-	}
-	if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
-	}
-	else
-		my_putchar(n + 48);
-
+	(void)ac;
+	print_str(t_to_tab, av[1]);
+	return 0;
 }
