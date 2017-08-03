@@ -6,34 +6,42 @@
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/03 17:04:31 by kana              #+#    #+#             */
-/*   Updated: 2017/08/03 19:34:16 by kana             ###   ########.fr       */
+/*   Updated: 2017/08/03 21:18:04 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
 
-int	rnd(int *rand)
+int	rnd(void)
 {
-	srand(time(NULL));
-	int r = rand() % 10;
-	return r;
+	return (rand() % 10);
 }
 
-int *grid(int rnd)
+int *grid()
 {
 	int *grid;
-	int i = 0;
+	int i = 1;
+	int j = 0;
+//	int k = i;
 	
-	if (!(grid = (int)malloc(sizeof(grid) * 10)))
+	if (!(grid = (int*)malloc(sizeof(grid) * 10)))
 		 return 0;
+	grid[0] = rnd();
 	while (i < 10)
 	{
-		if (rnd() != grid[j])
-			
-
+		j = 0;
+		while (j < 10)
+			j++;
+		if (i != )
+		{
+			grid[i] = rnd();
+		}
+		i++;
 	}
+	return grid;
 }
 
 char *str_db(int rand)
@@ -54,7 +62,13 @@ char *str_db(int rand)
 
 int main(void)
 {
-	int rand[10] = 
-	printf("%s", str_db());
+	srand(time(NULL));
+	int *rand = grid(); 
+//	int rnd = rand[0];
+//	printf("%s", str_db(rnd));
+
+	int i = -1;
+	while (++i < 10)
+		printf("%d, ", rand[i]);
 	return 0;
 }

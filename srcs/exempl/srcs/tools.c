@@ -6,12 +6,14 @@
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/31 11:44:23 by kana              #+#    #+#             */
-/*   Updated: 2017/08/02 11:24:59 by kana             ###   ########.fr       */
+/*   Updated: 2017/08/03 21:18:02 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struc.h"
 #include "list.h"
+#include <unistd.h>
+#include <time.h>
 
 void	ft_putchar(char c)
 {
@@ -40,38 +42,56 @@ char	*my_strdup(char *src)
 	i = 1;
 	while (src[i])
 		i++;
-	if (!(dst = (char*)malloc(sizeof(dst) * (i + 1))))
+	if (!(dst = (char*)malloc(sizeof(dst) * (i))))
 		return NULL;
 	while (*src)
-		*dst++; = *src++;
+		*dst++ = *src++;
 	*dst++ = '\0';
 	return dst;
 }
 
 char *str_db(void)
 {
-	int i = 0;
-	int r = rand() % 20;
-	char **str;
-	str[0][37] = "Je code sous unix et je vous emmerde";
-	str[1][36] = "CeTte #$ string est bizarre ~ non ?";
-	str[2][43] = "Je vais faire des string plus courte apres";
-	str[3][28] = "eFin j'espere, on verra bien";
-	str[4][46] = "Vingt-hui caracteres celle d'avant quand meme";
-	str[5][13] = "une courte !";
-	str[6][28] = "Va me falloir un coffix la";
-	str[7][45] = "plus c'est long plus c'est bon, tu es sure ?";
-	str[8][104] = "Heureseument que vim peux compter le nombre de caractere de ma string sinon je serais pas dans la merde";
-	str[9][25] = "10 c'est pas mal deja :)";
+	srand(time(NULL));
+	int r = rand() % 10;
+	char *str[10];
+	str[0] = "Je code sous unix et je vous emmerde";
+	str[1] = "CeTte #$ string est bizarre ~ non ?";
+	str[2] = "Je vais faire des string plus courte apres";
+	str[3] = "eFin j'espere, on verra bien";
+	str[4] = "Vingt-hui caracteres celle d'avant quand meme";
+	str[5] = "une courte !";
+	str[6] = "Va me falloir un coffix la";
+	str[7] = "plus c'est long plus c'est bon, tu es sure ?";
+	str[8] = "Heureseument que vim peux compter le nombre de caractere de ma string sinon je serais pas dans la merde";
+	str[9] = "10 c'est pas mal deja :)";
 	return (str[r]);
 }
 
+int main(int ac, char **av)
+{
+
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 void	print_list(t_list *list, void *data_ref)
 {
 	while (list)
 	{
 		if (list->res)
-			printf("\t%d\t||\t%d\t||\t%d\n", (int)data_ref, (int)list->src, (int)list->dst);
+			printf("\t%d\t||\t%d\t||\t%d\n", data_ref, list->src, list->dst);
 		else
 			printf("ERROR !");
 		list = list->next
@@ -122,11 +142,4 @@ t_list	*fill_list(void	*data_ref);
 	}
 	return (list);
 }
-
-int main(int ac, char **av)
-{
-	if (ac != 2)
-		return 0;
-	print_list(fill_list(str_db()), str_db());
-	return 0;
-}
+*/
