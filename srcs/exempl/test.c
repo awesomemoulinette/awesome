@@ -6,7 +6,7 @@
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/03 17:04:31 by kana              #+#    #+#             */
-/*   Updated: 2017/08/03 21:18:04 by kana             ###   ########.fr       */
+/*   Updated: 2017/08/03 22:28:14 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,45 @@ int	rnd(void)
 	return (rand() % 10);
 }
 
+int cmp(int i, int j)
+{
+	if (i == j)
+		return 1;
+	return 0;
+}
+
+int check(int *grid, int j)
+{
+	int i;
+	int rand;
+
+	rand = rnd();
+	while (i < j)
+	{
+		if (!(cmp(grid[i], rand)))
+			return 0;
+		i++;
+	}
+	if (i == j && cmp(grid[i], rand) != 0)
+		return rand;
+	return 0;
+}
+
 int *grid()
 {
 	int *grid;
 	int i = 1;
 	int j = 0;
-//	int k = i;
 	
 	if (!(grid = (int*)malloc(sizeof(grid) * 10)))
 		 return 0;
-	grid[0] = rnd();
 	while (i < 10)
 	{
-		j = 0;
-		while (j < 10)
-			j++;
-		if (i != )
-		{
-			grid[i] = rnd();
-		}
-		i++;
+		j++;
+		if (check(grid, j) == 1 )
+			i++;
+		else
+			return 0;
 	}
 	return grid;
 }
