@@ -6,7 +6,7 @@
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/03 17:04:31 by kana              #+#    #+#             */
-/*   Updated: 2017/08/04 20:23:13 by kana             ###   ########.fr       */
+/*   Updated: 2017/08/04 21:43:17 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,54 +15,38 @@
 #include<stdlib.h>
 #include<time.h>
 
-#define m 0
-#define M 10
-
-int	rnd(void)
-{
-	return (rand() % 10);
-}
-
-int gridcmp(int *grid, int r)
-{
-	int i = 0;
-	while (grid[i])
-	{
-		if (r == grid[i])
-			return 0;
-		i++;
-	}
-	return 1;
-}
-
 int *grid()
 {
 	int *grid;
 	int tmp;
-	int i = 1;
+	int i = 0;
+	int j;
+	int success = 0;
 	
 	if (!(grid = (int*)malloc(sizeof(grid) * 10)))
-		 return 0;
-	grid[0] = rand() % 10;
-	while (i < 10)
+		return 0;
+	do
 	{
-		tmp = rnd();
-		if (gridcmp(grid, tmp))
+		success = 1;
+		do
 		{
-			printf("\n1\n");
-			grid[i] = tmp;
-		}
-		else
-		{
-			while (!(gridcmp(grid, tmp)))
+			tmp = rand() % 10;
+			j = 0;
+			do	
 			{
-				tmp = rnd();
-				printf("\n0\n");
-			}
-			grid[i] = tmp;
-		}
+				printf("tmp = % d\tgrid : %d\n", tmp, grid[j]);
+				if (tmp == grid[j])
+					success = 0;
+				printf("%d\n", success);
+				j++;
+			} while (j < i);
+			success = 1;
+			printf("\n");
+		} while (!success);
+		grid[i] = tmp;
 		i++;
-	}
+	} while (i < 10);
+
 	return grid;
 }
 
