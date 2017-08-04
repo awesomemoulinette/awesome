@@ -6,47 +6,39 @@
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/03 17:04:31 by kana              #+#    #+#             */
-/*   Updated: 2017/08/04 12:00:59 by kana             ###   ########.fr       */
+/*   Updated: 2017/08/04 19:53:08 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include<unistd.h>
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+
+#define m 0
+#define M 10
 
 int	rnd(void)
 {
 	return (rand() % 10);
 }
 
-int cmp(int i, int j)
+int gridcmp(int *grid, int r)
 {
-	if (i == j)
-		return 1;
-	return 0;
-}
-
-int check(int *grid, int j)
-{
-	int i;
-	int rand;
-
-	rand = rnd();
-	while (i < j)
+	int i = 0;
+	while (grid[i])
 	{
-		if (!(cmp(grid[i], rand)))
+		if (r == grid[i])
 			return 0;
 		i++;
 	}
-	if (i == j && cmp(grid[i], rand) != 0)
-		return rand;
-	return 0;
+	return 1;
 }
 
 int *grid()
 {
 	int *grid;
+	int tmp;
 	int i = 1;
 	
 	if (!(grid = (int*)malloc(sizeof(grid) * 10)))
@@ -54,7 +46,15 @@ int *grid()
 	grid[0] = rand() % 10;
 	while (i < 10)
 	{
-		grid[i] = rnd();
+		tmp = rnd();
+		if (gridcmp(grid, tmp))
+			grid[i] = tmp;
+		else
+		{
+			while (!(gridcmp(grid, tmp)))
+				tmp = rnd();
+			grid[i] = tmp;
+		}
 		i++;
 	}
 	return grid;
@@ -81,7 +81,6 @@ int main(void)
 	srand(time(NULL));
 	int i = -1;
 	int *rand = grid(); 
-//	printf("%s", str_db(rnd));
 
 	while (++i < 10)
 		printf("%d : %s\n", rand[i], str_db(rand[i]));
