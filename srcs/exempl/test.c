@@ -6,7 +6,7 @@
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/03 17:04:31 by kana              #+#    #+#             */
-/*   Updated: 2017/08/03 22:28:14 by kana             ###   ########.fr       */
+/*   Updated: 2017/08/04 12:00:59 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,14 @@ int *grid()
 {
 	int *grid;
 	int i = 1;
-	int j = 0;
 	
 	if (!(grid = (int*)malloc(sizeof(grid) * 10)))
 		 return 0;
+	grid[0] = rand() % 10;
 	while (i < 10)
 	{
-		j++;
-		if (check(grid, j) == 1 )
-			i++;
-		else
-			return 0;
+		grid[i] = rnd();
+		i++;
 	}
 	return grid;
 }
@@ -70,7 +67,7 @@ char *str_db(int rand)
 	str[1] = "CeTte #$ string est bizarre ~ non ?";
 	str[2] = "Je vais faire des string plus courte apres";
 	str[3] = "Enfin j'espere, on verra bien";
-	str[4] = "Vingt-hui caracteres celle d'avant quand meme";
+	str[4] = "Vingt-huit caracteres celle d'avant quand meme";
 	str[5] = "une courte !";
 	str[6] = "Va me falloir un coffix la";
 	str[7] = "plus c'est long plus c'est bon, tu es sure ?";
@@ -82,12 +79,11 @@ char *str_db(int rand)
 int main(void)
 {
 	srand(time(NULL));
+	int i = -1;
 	int *rand = grid(); 
-//	int rnd = rand[0];
 //	printf("%s", str_db(rnd));
 
-	int i = -1;
 	while (++i < 10)
-		printf("%d, ", rand[i]);
+		printf("%d : %s\n", rand[i], str_db(rand[i]));
 	return 0;
 }
