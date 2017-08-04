@@ -6,7 +6,7 @@
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/03 17:04:31 by kana              #+#    #+#             */
-/*   Updated: 2017/08/04 21:43:17 by kana             ###   ########.fr       */
+/*   Updated: 2017/08/04 22:30:01 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,11 @@ int *grid()
 			j = 0;
 			do	
 			{
-				printf("tmp = % d\tgrid : %d\n", tmp, grid[j]);
 				if (tmp == grid[j])
 					success = 0;
-				printf("%d\n", success);
 				j++;
 			} while (j < i);
 			success = 1;
-			printf("\n");
 		} while (!success);
 		grid[i] = tmp;
 		i++;
