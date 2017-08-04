@@ -6,7 +6,7 @@
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/03 17:04:31 by kana              #+#    #+#             */
-/*   Updated: 2017/08/04 19:53:08 by kana             ###   ########.fr       */
+/*   Updated: 2017/08/04 20:23:13 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,17 @@ int *grid()
 	{
 		tmp = rnd();
 		if (gridcmp(grid, tmp))
+		{
+			printf("\n1\n");
 			grid[i] = tmp;
+		}
 		else
 		{
 			while (!(gridcmp(grid, tmp)))
+			{
 				tmp = rnd();
+				printf("\n0\n");
+			}
 			grid[i] = tmp;
 		}
 		i++;
