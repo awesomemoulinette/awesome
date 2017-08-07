@@ -6,7 +6,7 @@
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/03 17:04:31 by kana              #+#    #+#             */
-/*   Updated: 2017/08/07 11:18:03 by kana             ###   ########.fr       */
+/*   Updated: 2017/08/07 19:35:38 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,70 +40,70 @@
    } while (i < 10);
    return grid;
    }
-
-   int	*grid()
-   {
-   int		i;
-   int		j;
-   int		var;
-   int		*ret;
-
-   ret = malloc(sizeof(ret) * 10);
-   i = 0;
-   j = 0;
-   ret[0] = 0;
-   i++;
-   while (i < 10)
-   {
-   var = rand() % 10;
-   while (j <= i && i <= 9)
-   {
-   if (var == ret[j])
-   {
-   printf("i:%d\nj:%d\nold var: %d\tret: %d\n", i, j, var, ret[j]);
-   var = rand() % 10;
-   printf("new var: %d\n", var);
-   }
-   j++;
-   }
-   j = 0;
-   ret[i] = var;
-   printf("Value add to tab : %d\n", ret[i]);
-   i++;
-   printf("\n---------------------------------\n");
-   }
-   return ret;
-   }*/
-
-
-int		*grid(void)
+   */
+int	*grid()
 {
-	int		i = 0, j;
-	int		*tab;
+	int		i;
+	int		j;
+	int		var;
+	int		*ret;
 
-	if (!(tab = (int*)malloc(sizeof(int) * 10)))
-		return 0;
-	int		tmp = 0;
-
-	do
+	ret = malloc(sizeof(ret) * 10);
+	i = 0;
+	j = 0;
+	ret[0] = 0;
+	i++;
+	while (i < 10)
 	{
-		j = 0;
-		tmp = rand() % 10;
-		do
+		var = rand() % 10;
+		while (j <= i && i <= 9)
 		{
-			if (tmp == tab[j])
+			if (var == ret[j])
 			{
-				j = 0;
-				tmp = rand() % 10;
+				printf("i:%d\nj:%d\nold var: %d\tret: %d\n", i, j, var, ret[j]);
+				var = rand() % 10;
+				printf("new var: %d\n", var);
 			}
 			j++;
-		} while (j <= i);
-		tab[i] = tmp;
+		}
+		j = 0;
+		ret[i] = var;
+		printf("Value add to tab : %d\n", ret[i]);
 		i++;
-		printf("%d\n", tab[i]);
-	} while (i < 10);
-	return tab;
+		printf("\n---------------------------------\n");
+	}
+	return ret;
 }
+
+/*
+   int		*grid(void)
+   {
+   int		i = 0, j;
+   int		*tab;
+
+   if (!(tab = (int*)malloc(sizeof(tab) * 10)))
+   return 0;
+   int		tmp = 0;
+
+   do
+   {
+   j = 0;
+   tmp = rand() % 10;
+   tab[i] = tmp;
+   do
+   {
+   if (tmp == tab[j])
+   {
+   j = 0;
+   tmp = rand() % 10;
+   }
+   j++;
+   } while (j < i);
+   i++;
+   printf("%d\n", tab[i]);
+   } while (i < 10);
+   return tab;
+   }*/
 
 
 char *str_db(int rand)
@@ -125,6 +125,6 @@ char *str_db(int rand)
 int main(void)
 {
 	srand(time(NULL));
-	int *rand = grid(); 
+	grid(); 
 	return 0;
 }
