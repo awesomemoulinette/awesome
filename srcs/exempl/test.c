@@ -6,7 +6,7 @@
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/03 17:04:31 by kana              #+#    #+#             */
-/*   Updated: 2017/08/07 20:31:59 by kana             ###   ########.fr       */
+/*   Updated: 2017/08/07 20:36:48 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,29 @@
 #include<stdlib.h>
 #include<time.h>
 
-int	*grid()
+int	*grid(int size)
 {
 	int		i;
 	int		j;
 	int		var;
 	int		*ret;
 
-	ret = malloc(sizeof(ret) * 10);
+	ret = malloc(sizeof(ret) * size);
 	i = 0;
 	j = 0;
-	ret[0] = rand() % 10;
+	ret[0] = rand() % size;
 	i++;
-	while (i < 10)
+	while (i < size)
 	{
-		var = rand() % 10;
+		var = rand() % size;
 		j = 0;
-		while (j < i && i <= 10)
+		while (j < i && i < size)
 		{
 			while (var == ret[j])
 			{
 				printf("var before change: %d\t\t", var);
 				j = 0;
-				var = rand() % 10;
+				var = rand() % size;
 				printf("var after change: %d\n", var);
 			}
 			j++;
@@ -52,7 +52,7 @@ int	*grid()
 	}
 	i = 0;
 	printf("\n\n{ %d", ret[0]);
-	while (++i < 10)
+	while (++i < size)
 		printf(", %d", ret[i]);
 	printf(" }\n");
 	return ret;
@@ -74,9 +74,12 @@ char *str_db(int rand)
 	return (str[rand]);
 }
 
-int main(void)
+int main(int ac, char *av[])
 {
+	int size = atoi(av[1]);
+	if (ac != 2)
+		size = 10;
 	srand(time(NULL));
-	grid(); 
+	grid(size);
 	return 0;
 }
