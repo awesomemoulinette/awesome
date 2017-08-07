@@ -6,7 +6,7 @@
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/29 22:51:44 by kana              #+#    #+#             */
-/*   Updated: 2017/07/31 10:53:55 by kana             ###   ########.fr       */
+/*   Updated: 2017/08/07 22:06:13 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,49 +85,45 @@ int		my_atoi(char *str)
 
 int		icmp(int n, int nb)
 {
-	if (n = nb)
+	if (n == nb)
 		return 1;
 	return 0;
 }
 
-struct s_int_render	*my_int_to_tab(int ac, char **av, int (*icmp)(int, int))
+int	*grid(unsigned int size)
 {
-	t_int_render	*exo;
-	int				i;
-	int				j;
+	unsigned int	i, j;
+	int				tmp;
+	int				*tab;
 
-	if (!(exo = malloc(sizeof(t_int_render) * (ac))))
-		return NULL;
-	while (i < ac)
+	if (!( tab = (int*)malloc(sizeof(tab) * size)))
+		return 0;
+	i = 0;
+	j = 0;
+	tab[0] = rand() % size;
+	while (++i < size)
 	{
+		tmp = rand() % size;
 		j = 0;
-		while (av[i][j])
+		while (j < i && i < size)
+		{
+			while (tmp == tab[j])
+			{
+				j = 0;
+				tmp = rand() % size;
+			}
 			j++;
-		exo[i].out = av[i];
-		exo[i].srcs = my_atoi(av[i]);
-		exo[i].receip = ft_atoi(av[i]);
-		exo[i].cmp = icmp(my_atoi(av[i]), ft_atoi(av[i]));
-		i++;
+		}
+		tab[i] = tmp;
 	}
-	
-	return exo;
+	return tab;
 }
 
-void	my_show_tab(struct s_int_render *exo)
+void	show_result(char *grid)
 {
-	while (exo)
-	{
-		if (exo.cmp)
-			printf("\t\t%d\t\t||\t\t"GRN"%d"NC"\t\t||\t\t"NC"%d"GRN"\t\t", exo.out, exo.receip, exo.srcs);
-		else	
-			printf("\t\t%d\t\t||\t\t"GRN"%d"NC"\t\t||\t\t"NC"%d"GRN"\t\t", exo.out, exo.receip, exo.srcs);
-	}
+	srand(time(NULL));
+	unsigned int i = -1;
+	int* rand = grid(22);
+	while (++i < 10)
+		printf("test %d:\n%s\n\n", i, str_db(rand[i]));
 }
-
-
-
-
-
-
-
-
