@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   str_db.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/03 17:04:31 by kana              #+#    #+#             */
-/*   Updated: 2017/08/07 20:41:38 by kana             ###   ########.fr       */
+/*   Created: 2017/08/07 20:44:26 by kana              #+#    #+#             */
+/*   Updated: 2017/08/07 21:33:33 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,18 @@
 #include<stdlib.h>
 #include<time.h>
 
-int	*grid(int size)
+int	*grid(unsigned int size)
 {
-	int		i;
-	int		j;
-	int		tmp;
-	int		*tab;
+	unsigned int	i, j;
+	int				tmp;
+	int				*tab;
 
-	tab = malloc(sizeof(tab) * size);
+	if (!( tab = (int*)malloc(sizeof(tab) * size)))
+		return 0;
 	i = 0;
 	j = 0;
 	tab[0] = rand() % size;
-	i++;
-	while (i < size)
+	while (++i < size)
 	{
 		tmp = rand() % size;
 		j = 0;
@@ -35,32 +34,19 @@ int	*grid(int size)
 		{
 			while (tmp == tab[j])
 			{
-				printf("tmp before change: %d\t\t", tmp);
 				j = 0;
 				tmp = rand() % size;
-				printf("tmp after change: %d\n", tmp);
 			}
 			j++;
 		}
-		j = i - 1;
 		tab[i] = tmp;
-		printf("\nValue add to tab :\t%d\nAlready in tab :\t%d\n", tab[i], tab[j]);
-		while (--j > 0)
-			printf("\t\t\t%d\n", tab[j]);
-		i++;
-		printf("\n---------------------------------\n");
 	}
-	i = 0;
-	printf("\n\n{ %d", tab[0]);
-	while (++i < size)
-		printf(", %d", tab[i]);
-	printf(" }\n");
 	return tab;
 }
 
 char *str_db(int rand)
 {
-	char *str[10];
+	char *str[22];
 	str[0] = "Je code sous unix et je vous emmerde";
 	str[1] = "CeTte #$ string est bizarre ~ non ?";
 	str[2] = "Je vais faire des string plus courte apres";
@@ -71,15 +57,27 @@ char *str_db(int rand)
 	str[7] = "plus c'est long plus c'est bon, tu es sure ?";
 	str[8] = "Heureseument que vim peux compter le nombre de caractere de ma string sinon je serais pas dans la merde";
 	str[9] = "10 c'est pas mal deja :)";
+	str[10] = "90dZP8qyLVtK";
+	str[11] = "up6sU8Z";
+	str[12] = "NVUTefk8gH";
+	str[13] = "FxCLbg9u24E";
+	str[14] = "ba9";
+	str[15] = "VfoAup6sU8Z";
+	str[16] = "o";
+	str[17] = "LkXmr";
+	str[18] = "Quelle est la mamie qui fait peur ? Mamie Traillette.";
+	str[19] = "Quand est-ce que windows ne plante pas ?\nQuand l'ordinateur est eteint";
+	str[20] = "Que dit une mère à son fils geek quand le diner est servi ?\nAlt Tab !!!";
+	str[21] = "Un geek ne descend pas du métro. Il libère la RAM...";
 	return (str[rand]);
 }
 
-int main(int ac, char *av[])
+int main()
 {
-	int size = atoi(av[1]);
-	if (ac != 2)
-		size = 10;
 	srand(time(NULL));
-	grid(size);
+	unsigned int i = -1;
+	int *rand = grid(22);
+	while (++i < 10)
+		printf("test %d:\n%s\n\n", i, str_db(rand[i]));
 	return 0;
 }
