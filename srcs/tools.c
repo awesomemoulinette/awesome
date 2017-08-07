@@ -6,7 +6,7 @@
 /*   By: kana <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/29 22:51:44 by kana              #+#    #+#             */
-/*   Updated: 2017/08/07 22:06:13 by kana             ###   ########.fr       */
+/*   Updated: 2017/08/07 23:36:38 by kana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,22 @@ int		my_atoi(char *str)
 	return sign * res;
 }
 
-int		icmp(int n, int nb)
+char*	my_strdup(char *src)
 {
-	if (n == nb)
-		return 1;
-	return 0;
+	int		i = 0;
+	char*	dst;
+	while (src[i])
+		i++;
+	if (!(dst = (char*)malloc(sizeof(dst) * i + 1)))
+		return 0;
+	i = -1;
+	while (src[++i])
+		dst[i] = src[i];
+	dst[i] = '\0';
+	return dst;
 }
 
-int	*grid(unsigned int size)
+int*	grid(unsigned int size)
 {
 	unsigned int	i, j;
 	int				tmp;
@@ -119,11 +127,27 @@ int	*grid(unsigned int size)
 	return tab;
 }
 
-void	show_result(char *grid)
+int		besure(char *tab)
+{
+	unsigned int i = 1;
+	int *rnd = tab[i];
+	while (i < 5)
+	{
+		if (my_strdup(str_db(rnd[i]) != ft_strdup(str_db(rnd[i]))))
+		printf("out :\n%s\n"RED"%s"NC"\n"GRN"%s"NC"", str_db(grid[i]),ft_strdup(str_db(grid[i])), my_strdup(str_db(grid[i])));
+		else
+			printf("out :\n%s\n"RED"%s"NC"\n"GRN"%s"NC"", str_db(grid[i]), ft_strdup(str_db(grid[i])), my_strdup(str_db(grid[i])));
+		i++;
+		return 1;
+	}	
+}
+/*
+void	show_result(char* grid)
 {
 	srand(time(NULL));
 	unsigned int i = -1;
 	int* rand = grid(22);
+	
 	while (++i < 10)
 		printf("test %d:\n%s\n\n", i, str_db(rand[i]));
-}
+}*/
